@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+
+android {
+  compileSdkVersion hs.android.compileSdkVersion
+  namespace "org.hyperskill.secretdiary"
+  defaultConfig {
+
+    applicationId "org.hyperskill.secretdiary"
+    minSdkVersion hs.android.minSdkVersion
+    targetSdkVersion hs.android.targetSdkVersion
+    versionCode 1
+    versionName '1.0'
+  }
+
+  buildFeatures {
+    viewBinding true
+      compose true
+  }
+  composeOptions {
+    kotlinCompilerExtensionVersion = "1.5.8"
+  }
+  compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+}
+
+dependencies {
+  implementation 'androidx.test:core-ktx:1.4.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+    implementation 'androidx.activity:activity-compose:1.8.0'
+    implementation platform('androidx.compose:compose-bom:2024.04.01')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3'
+  implementation 'androidx.activity:activity:1.10.0'
+  androidTestImplementation platform('androidx.compose:compose-bom:2024.04.01')
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+    def kotlinVersion = hs.android.kotlinVersion
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+
+  def coreKtx = hs.android.lib.coreKtx
+  implementation "androidx.core:core-ktx:$coreKtx"
+
+  def appCompat = hs.android.lib.appCompat
+  implementation "androidx.appcompat:appcompat:$appCompat"
+
+  def constraintLayout = hs.android.lib.constraintLayout
+  implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
+
+  def material = hs.android.lib.material
+  implementation "com.google.android.material:material:$material"
+
+  implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
+}
